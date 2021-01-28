@@ -1,0 +1,78 @@
+﻿@model TechAssignment.Models.Carrier
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Carrier</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BussinessName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BussinessName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BussinessAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BussinessAddress)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BussinessPhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BussinessPhoneNumber)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div>
+    <h3>MGA Details</h3>
+    @foreach (var item in Model.MGAs)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(modelItem => item.BussinessName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(modelItem => item.BussinessAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(modelItem => item.BussinessPhoneNumber)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BussinessName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BussinessAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BussinessPhoneNumber)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+</div>
